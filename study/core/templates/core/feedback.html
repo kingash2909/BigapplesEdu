@@ -1,0 +1,352 @@
+<!----------------- Home temp ------------------>
+
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+
+    <!-- Site Metas -->
+    <title>BigApple's Edu </title>
+    <meta name="keywords" content=" Free Educational Materials">
+    <meta name="description" content="Free Courses and Study Materials">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="static/Home_Main/images/weblogo.png" type="static/Home_Main/images/x-icon"/>
+    <link rel="apple-touch-icon" href="#"/>
+    <link rel="icon" href="{% static 'core/images/logostat.png' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <style>
+        .bgimg {
+            color: red;
+            background-image: url('{% static 'core/images/feedbackbg.jpg' %}');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a style="position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;" href="https://api.whatsapp.com/send?phone=+917303019154&text=Hi,%20Welcome%20to%20BigApple's Edu., How can I help %20You..!%20." class="float" target="_blank">
+<i style="	margin-top:16px;
+" class="fa fa-whatsapp my-float"></i>
+</a>
+</head>
+
+<body>
+
+
+<!-- Header -->
+<div class="header sticky fixed">
+    <nav style="height:80px;">
+        <div class="menu-icon">
+            <span class="fas fa-bars"></span></div>
+        <div class="logo">
+            <a class="navbar-brand" href="{% url 'Index' %}"><img style="width: 170px; height:70px;"
+                                                                  src="{% static 'core/images/logo.png' %}" alt="image"></a>
+        </div>
+        <div class="nav-items ">
+            <li><a href="{% url 'Index' %}">Free Courses </a></li>
+            <!-- <li><a href="{% url 'studymaterials' %}" target="_blank">Study Materials</a></li> -->
+            <li><a href="{% url 'about' %}" target="">About us</a></li>
+            <li><a class="active" href="{% url 'feedback' %}" target="">Feedback</a></li>
+        </div>
+        <div class="search-icon">
+            <span class="fas fa-search"></span></div>
+        <div class="cancel-icon">
+            <span class="fas fa-times"></span></div>
+        <form method="get" action="/search/">
+            <input type="search" class="search-data" placeholder="Search" name="query" id="query">
+            <button type="submit" class="fas fa-search"></button>
+        </form>
+    </nav>
+</div>
+<!-- Header End -->
+
+{% if firstname %}
+<br><br><br><br><br><br>
+
+<center>
+
+    <img style="height:150px; width:170px" src="{% static 'core/images/contact.gif' %}" alt="image">
+    <h2>Thanks {{ firstname }}! </h2>
+    <p>We received your response and will respond shortly...</p>
+</center>
+<br><br><br>
+{% else %}
+<!--  Main Content -->
+<br><br><br>
+<div class="row">
+    <div class="col-md-12">
+        <div class="contact-info text-center">
+            <img style="height:150px; width:170px" src="{% static 'core/images/emailsent.gif' %}" alt="image">
+        </div>
+        <h1 class="text-center">Contact Us/ Submit CouponCode or Course</h1>
+        <h4 class="text-center">We would love to hear from you!</h4>
+    </div>
+</div>
+<br><br>
+
+<div class="container">
+    <div class="col-md-12">
+        <form action="{% url 'feedback' %}" method="post">
+            {% csrf_token %}
+            <div class="contact-form">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="fname"><h5>First Name:</h5></label>
+                    <div class="">
+                        <input style="background-color: #3CBC8D; color: white;" type="text" class="form-control"
+                               id="fname" placeholder="Enter First Name" name="fname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="lname"><h5>Last Name:</h5></label>
+                    <div class="">
+                        <input style="background-color: #3CBC8D; color: white;" type="text" class="form-control"
+                               id="lname" placeholder="Enter Last Name" name="lname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email"><h5>Email:</h5></label>
+                    <div class="">
+                        <input style="background-color: #3CBC8D; color: white;" type="email" class="form-control"
+                               id="email" placeholder="Enter email" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="comment"><h5>Comment/Coupon code:</h5></label>
+                    <div class="">
+                        <textarea style="background-color: #3CBC8D; color: white;" class="form-control" name="comment"
+                                  placeholder="Write your feedback, comment or CouponCode..."
+                                  rows="5" id="comment"></textarea>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group text-center">
+                    <div class="col-sm-offset-2 ">
+                        <button style="background-color: #140564; color: white; width:100%" type="submit"
+                                class="btn btn-primary btn-lg ">Submit
+                        </button>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+{% endif %}
+
+
+<!--    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">-->
+<!--        <div class="w3-display-topleft w3-padding-large w3-xlarge"></div>-->
+<!--        <div class="w3-display-middle">-->
+<!--            <img src="{% static 'core/images/Comingsoon.jpg' %}" alt="comingsoon" style="  width: 100%;-->
+<!--  height: auto;">-->
+<!--        </div>-->
+<!-- Main Content  ends-->
+
+
+<!-- Footer -->
+<footer class="page-footer font-small bg-dark " style="background:  #1e232b">
+
+    <!-- Footer Elements -->
+    <div class="container">
+
+        <!-- Grid row-->
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-12 my-5">
+                <div class=" text-center">
+                    <img src="{% static 'core/images/logo.png' %}" alt="footerlogo">
+                    <h5 class="textcenter text-white my-4">&copy BigApple's Edu. All Rights Reserved {% now "Y" %}.
+                    </h5>
+                </div>
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!-- Grid row-->
+    </div>
+    <!-- Footer Elements -->
+</footer>
+<!-- END Footer -->
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+</script>
+<script>
+            const menuBtn = document.querySelector(".menu-icon span");
+            const searchBtn = document.querySelector(".search-icon");
+            const cancelBtn = document.querySelector(".cancel-icon");
+            const items = document.querySelector(".nav-items");
+            const form = document.querySelector("form");
+            menuBtn.onclick = () => {
+                items.classList.add("active");
+                menuBtn.classList.add("hide");
+                searchBtn.classList.add("hide");
+                cancelBtn.classList.add("show");
+            }
+            cancelBtn.onclick = () => {
+                items.classList.remove("active");
+                menuBtn.classList.remove("hide");
+                searchBtn.classList.remove("hide");
+                cancelBtn.classList.remove("show");
+                form.classList.remove("active");
+                cancelBtn.style.color = "#ff3d00";
+            }
+            searchBtn.onclick = () => {
+                form.classList.add("active");
+                searchBtn.classList.add("hide");
+                cancelBtn.classList.add("show");
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+
+</script>
+<script>
+            $(window).scroll(function () {
+                var sticky = $('.sticky'),
+                    scroll = $(window).scrollTop();
+
+                if (scroll >= 100) sticky.addClass('fixed');
+                else sticky.removeClass('fixed');
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<!--<script>-->
+<!--window.onscroll = function() {myFunction()};-->
+
+<!--var header = document.getElementById("myHeader");-->
+<!--var sticky = header.offsetTop;-->
+
+<!--function myFunction() {-->
+<!--  if (window.pageYOffset > sticky) {-->
+<!--    header.classList.add("sticky");-->
+<!--  } else {-->
+<!--    header.classList.remove("sticky");-->
+<!--  }-->
+<!--}-->
+
+
+<!--</script>-->
+
+
+</body>
+
+</html>
